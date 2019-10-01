@@ -12,7 +12,7 @@ from edward.models.random_variables import TransformedDistribution
 from edward.models import PointMass
 from edward.util.graphs import random_variables
 from tensorflow.core.framework import attr_value_pb2
-from tensorflow.python.framework.ops import set_shapes_for_outputs
+from tensorflow.python.framework.ops import set_shape_and_handle_data_for_outputs
 from tensorflow.python.util import compat
 
 tfb = tf.contrib.distributions.bijectors
@@ -402,7 +402,7 @@ def copy(org_instance, dict_swap=None, scope="copied",
     op_type = new_name
 
     if compute_shapes:
-      set_shapes_for_outputs(new_op)
+      set_shape_and_handle_data_for_outputs(new_op)
     graph._record_op_seen_by_control_dependencies(new_op)
 
     if compute_device:
